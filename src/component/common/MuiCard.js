@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch, useSelector } from "react-redux";
+import { ADD_TO_CART,DELETE_FROM_CART } from "../../redux/shoppingReducer";
 
 export default function MediaCard({ product }) {
    const {cart}= useSelector(state=>state);
@@ -40,9 +41,9 @@ export default function MediaCard({ product }) {
         </Typography>
       </CardContent>
       <CardActions>
-        {cart.some(c=>c.product.id===product.id)? <Button onClick={()=>dispatch({type:'DELETE_FROM_CART',payload:{product,qty:1}})} variant="outlined" startIcon={<DeleteIcon />}>
+        {cart.some(c=>c.product.id===product.id)? <Button onClick={()=>dispatch(DELETE_FROM_CART({product,qty:1}))} variant="outlined" startIcon={<DeleteIcon />}>
           Delete
-        </Button>:<Button variant="contained" onClick={()=>dispatch({type:'ADD_TO_CART',payload:{product,qty:1}})}>Add to Cart</Button>}
+        </Button>:<Button variant="contained" onClick={()=>dispatch(ADD_TO_CART({product,qty:1}))}>Add to Cart</Button>}
        
       </CardActions>
     </Card>

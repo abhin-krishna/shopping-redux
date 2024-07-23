@@ -1,5 +1,5 @@
-import { legacy_createStore } from "redux";
-import shoppingReducer from "./shoppingReducer";
+import reducer from "./shoppingReducer";
+import { configureStore } from "@reduxjs/toolkit";
 
-const store=legacy_createStore(shoppingReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store=configureStore({reducer});
 export default store
